@@ -75,23 +75,23 @@ sum_lowercase = 0
 
 len_word_count = {}                 #List storing lengths of words
 
+
 split_words = selected_text.split()
 for text in split_words:
-    if not text.isnumeric():
-        sum_words += 1
+    sum_words += 1
 
 for word in split_words:
-    if not word.isnumeric():                                        #Counting the lengths of words and adding them into a list
-        length = len(word)
-        len_word_count[length] = len_word_count.get(length, 0) + 1  
-    if word.isnumeric():                                            #Sum of all numeric characters
+    clean_word = word.strip(",.")                                            
+    length = len(clean_word)              #Counting the lengths of words and adding them into a list
+    len_word_count[length] = len_word_count.get(length, 0) + 1  
+    if clean_word.isnumeric():                                            #Sum of all numeric characters
         sum_nums += int(word)
         numeric_count += 1
-    if word.istitle():
+    if clean_word.istitle():
         sum_words_title += 1
-    if word.isupper():
+    if clean_word.isupper():
         sum_words_UPPER += 1
-    if word.islower():
+    if clean_word.islower():
         sum_lowercase += 1
     
 
@@ -108,4 +108,4 @@ print("LEN|     OCCURRENCES      |NR.")
 print(line)
 for length in sorted(len_word_count):
     count = len_word_count[length]
-    print(f"{length}| {"*" * count} {count}")
+    print(f"{length}| {"*" * count}  |{count}")
