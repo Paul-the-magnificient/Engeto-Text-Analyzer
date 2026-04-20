@@ -108,4 +108,4 @@ print("LEN|     OCCURRENCES      |NR.")
 print(line)
 for length in sorted(len_word_count):
     count = len_word_count[length]
-    print(f"{length}| {"*" * count}  |{count}")
+    print(f"{length:>2}| {"*" * count:<20}  |{count}")
