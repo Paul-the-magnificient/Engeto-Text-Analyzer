@@ -58,6 +58,11 @@ min_number = 1                      # Hardcoded min. range, assuming the list is
 print(f"We have {number_of_texts} texts to analyze")
 print(line)
 selected_text = input(f"Please select a number between {min_number} and {number_of_texts}:")
+
+if not selected_text.isdigit():
+    print("Invalid input, terminating the program.")
+    exit()
+
 choice = int(selected_text)
 
 if choice < 1 or choice > number_of_texts:
@@ -82,9 +87,9 @@ for text in split_words:
 
 for word in split_words:
     clean_word = word.strip(",.")                                            
-    length = len(clean_word)              #Counting the lengths of words and adding them into a list
-    len_word_count[length] = len_word_count.get(length, 0) + 1  
-    if clean_word.isnumeric():                                            #Sum of all numeric characters
+    length = len(clean_word)                    
+    len_word_count[length] = len_word_count.get(length, 0) + 1      #Counting the lengths of words and adding them into a list
+    if clean_word.isnumeric():                  #Sum of all numeric characters
         sum_nums += int(word)
         numeric_count += 1
     if clean_word.istitle():
